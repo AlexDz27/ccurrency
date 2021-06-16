@@ -1,26 +1,61 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Input
+    v-for="(amount, name) in currencies"
+    :key="name"
+
+    :currency:="{ amount: amount, name: name }"
+
+
+  />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Input from '@/components/Input';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  components: { Input },
+
+  data() {
+    return {
+      currencies: {
+        usd: 1,
+        byn: 0
+      }
+    }
+  },
+
+  methods: {
+    // convert(evt) {
+    //   console.log( getCurrencyAmountFromUsd() )
+    // }
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  max-width: 435px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 32px;
+}
+
+.input-currency {
+  margin-right: 9px;
 }
 </style>
