@@ -2,15 +2,15 @@
   <Input
     v-for="(amount, name) in currencies"
     :key="name"
-
-    :currency:="{ amount: amount, name: name }"
-
-
+    :currency="{ name, amount }"
+    @type="convert"
   />
 </template>
 
 <script>
 import Input from '@/components/Input';
+import { getCurrencyAmountFromUsd } from '@/logic/functions';
+import { RATIOS } from '../ratios';
 
 export default {
   components: { Input },
@@ -19,43 +19,24 @@ export default {
     return {
       currencies: {
         usd: 1,
-        byn: 0
+        byn: 0,
+        eur: 0,
+        rub: 0,
+        uah: 0
       }
     }
   },
 
   methods: {
-    // convert(evt) {
-    //   console.log( getCurrencyAmountFromUsd() )
-    // }
+    convert({ name, amount }) {
+      console.log(name)
+
+      const bynAmount = getCurrencyAmountFromUsd(amount, RATIOS.BYN);
+
+      this.currencies.byn = bynAmount;
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  max-width: 435px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.input-container {
-  display: flex;
-  align-items: center;
-  font-size: 32px;
-}
-
-.input {
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 32px;
-}
-
-.input-currency {
-  margin-right: 9px;
-}
-</style>
+<style src="./css/style.css" />

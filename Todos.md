@@ -2,4 +2,6 @@
 
 ## Code
 
-1. Formatting for CSS styles via some prettiers?
+1. Load ratios function
+
+2. Formatting for CSS styles via some prettiers?

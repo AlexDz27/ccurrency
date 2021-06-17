@@ -1,7 +1,11 @@
 <template>
   <p class="input-container">
-    <span class="input-currency">{{ currency.name }}:</span>
-    <input @keypress="allowOnlyNumeric" class="input">
+    <span class="input-currency">{{ formattedName }}:</span>
+    <input
+      @keyup="$emit('type', {name: currency.name, amount: $event.target.value})"
+      @keypress="allowOnlyNumeric"
+      class="input"
+    >
   </p>
 </template>
 
@@ -10,7 +14,14 @@ import { stringHasOnlyNumbers } from '@/utils/functions';
 
 export default {
   props: {
-    currency: Object
+    currency: {
+      type: Object,
+      required: true
+    }
+  },
+
+  emits: {
+    type: null
   },
 
   methods: {
@@ -21,8 +32,10 @@ export default {
     },
   },
 
-  created() {
-    console.log(this.currency)
+  computed: {
+    formattedName() {
+      return this.currency.name.toUpperCase();
+    }
   }
 }
 </script>
