@@ -1,0 +1,17 @@
+{
+  "name": "CCurrency",
+  "description": "A currency converter - fast and easy to use.",
+  "version": "0.1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "32": "/icons/extension-icon.png",
+      "48": "/icons/extension-icon.png"
+    }
+  },
+  "icons": {
+    "32": "/icons/extension-icon.png",
+    "48": "/icons/extension-icon.png"
+  }
+}

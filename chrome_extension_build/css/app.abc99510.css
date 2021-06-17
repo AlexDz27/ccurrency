@@ -1,0 +1,7 @@
+#app{font-family:Arial,sans-serif;text-align:center;color:#2c3e50;margin-top:60px;max-width:435px;margin-left:auto;margin-right:auto}.input-container{display:flex;align-items:center;font-size:32px}.input{width:100%;box-sizing:border-box;font-size:32px}.input-currency{margin-right:9px}
+
+body {
+  width: 405px;
+  margin-left: auto;
+  margin-right: auto;
+}
