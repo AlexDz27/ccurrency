@@ -4,6 +4,7 @@
     :key="currency.name"
     :currency="currency"
     @type="convert"
+    @inputEmptied="emptyAllInputs"
   />
 </template>
 
@@ -52,7 +53,7 @@ export default {
      * @param amount Amount of currency from input
      */
     // TODO: write better
-    convert({ name, amount }) {
+    convert({ name, amount } = {name: 'USD', amount: 1}) {
       if (name === 'USD') {
         this.currencies.USD.amount = amount;
       } else {
@@ -65,7 +66,18 @@ export default {
       for (const currencyName of currenciesNames) {
         this.currencies[currencyName].amount = getCurrencyAmountFromUsdAmount(this.currencies.USD.amount, RATIOS[currencyName]);
       }
+    },
+
+    emptyAllInputs() {
+      const currenciesNames = Object.keys(this.currencies);
+      for (const currencyName of currenciesNames) {
+        this.currencies[currencyName].amount = '';
+      }
     }
+  },
+
+  mounted() {
+    this.convert();
   }
 };
 </script>

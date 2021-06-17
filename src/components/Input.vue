@@ -2,7 +2,7 @@
   <p class="input-container">
     <span class="input-currency">{{ currency.name }}:</span>
     <input
-      @keyup="$emit('type', {name: currency.name, amount: $event.target.value})"
+      @keyup="$emit('type', {name: currency.name, amount: $event.target.value}), checkIfEmpty($event)"
       @keypress="allowOnlyNumeric"
       :value="currency.amount"
       class="input"
@@ -22,7 +22,8 @@ export default {
   },
 
   emits: {
-    type: null
+    type: null,
+    inputEmptied: null
   },
 
   methods: {
@@ -31,6 +32,12 @@ export default {
         evt.preventDefault();
       }
     },
+
+    checkIfEmpty(evt) {
+      if (evt.target.value === '') {
+        this.$emit('inputEmptied');
+      }
+    }
   },
 }
 </script>
