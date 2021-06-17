@@ -1,9 +1,10 @@
 <template>
   <p class="input-container">
-    <span class="input-currency">{{ formattedName }}:</span>
+    <span class="input-currency">{{ currency.name }}:</span>
     <input
       @keyup="$emit('type', {name: currency.name, amount: $event.target.value})"
       @keypress="allowOnlyNumeric"
+      :value="currency.amount"
       class="input"
     >
   </p>
@@ -31,11 +32,5 @@ export default {
       }
     },
   },
-
-  computed: {
-    formattedName() {
-      return this.currency.name.toUpperCase();
-    }
-  }
 }
 </script>
