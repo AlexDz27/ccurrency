@@ -1,6 +1,6 @@
 export const RATIOS = {
-  BYN: 2.4954,
-  EUR: 0.8246,
-  RUB: 71.9697,
-  UAH: 27.0675
+  BYN: 2.5295,
+  EUR: 0.8373,
+  RUB: 72.1807,
+  UAH: 27.3584
 };
